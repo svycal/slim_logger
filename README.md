@@ -2,7 +2,7 @@
 
 A logger implementation to replace the default `Phoenix.Logger`.
 
-This implemention is a fork of `Phoenix.Logger` designed to produce slimmer single-line log entries for requests, similar to [Logster](https://hexdocs.pm/logster/readme.html) or Lograge. We decided to use the default Phoenix logger as a base implementation, since Logster is not very actively maintained (as of August 2022) and we want to keep the benefits of conditionally disabling logs (via `Plug.Telemetry` config) and outputting the default debug logs in development mode (which we would lose by switching wholesale over to Logster).
+This is a fork of `Phoenix.Logger` designed to produce slimmer single-line log entries for requests.
 
 ## Installation
 
