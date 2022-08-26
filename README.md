@@ -2,7 +2,7 @@
 
 A logger implementation to replace the default `Phoenix.Logger`.
 
-This is a fork of `Phoenix.Logger` designed to produce slimmer single-line log entries for requests.
+This is a fork of `Phoenix.Logger` designed to produce slimmer, single-line log entries for requests. At the moment, only standard request logs have been slimmed down.
 
 ## Installation
 
@@ -11,12 +11,12 @@ The package can be installed by adding `slim_logger` to your list of dependencie
 ```elixir
 def deps do
   [
-    {:slim_logger, git: "https://github.com/svycal/slim_logger.git", ref: "main"}
+    {:slim_logger, "~> 0.1"}
   ]
 end
 ```
 
-You'll want to disable the default Phoenix logger in config:
+To get started, disable the default Phoenix logger in config:
 
 ```elixir
 # config/config.exs
@@ -25,7 +25,7 @@ You'll want to disable the default Phoenix logger in config:
 config :phoenix, :logger, false
 ```
 
-Then, in your application file, run the install command:
+Then, in your application file, call the install function:
 
 ```elixir
 # lib/my_app/application.ex
