@@ -2,8 +2,7 @@ defmodule SlimLogger.Formatter do
   @moduledoc """
   A slim formatter for one-line log entries (e.g. method=GET format=html).
 
-  Implementation based on Logster's string formatter:
-  https://github.com/navinpeiris/logster/blob/3287b7d10a99e646ae90f695f1cea3b55f503adc/lib/logster/string_formatter.ex
+  Implementation based on the [Logster string formatter](https://github.com/navinpeiris/logster/blob/master/lib/logster/string_formatter.ex).
   """
 
   @doc """

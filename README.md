@@ -1,6 +1,6 @@
-# SlimLogger
+# Slim Logger [![Hex Docs](https://img.shields.io/hexpm/v/slim_logger)](https://hexdocs.pm/slim_logger/readme.html)
 
-A logger implementation to replace the default `Phoenix.Logger`.
+A single-line logger implementation to replace the default Phoenix logger.
 
 This is a fork of `Phoenix.Logger` designed to produce slimmer, single-line log entries for requests. At the moment, only standard request logs have been slimmed down.
 
@@ -11,7 +11,7 @@ The package can be installed by adding `slim_logger` to your list of dependencie
 ```elixir
 def deps do
   [
-    {:slim_logger, "~> 0.1"}
+    {:slim_logger, "~> 0.1.0"}
   ]
 end
 ```

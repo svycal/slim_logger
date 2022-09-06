@@ -2,7 +2,7 @@ defmodule SlimLogger.Request do
   @moduledoc """
   Compiles Phoenix request data into map for logging.
 
-  Based on the [Logster plug](https://raw.githubusercontent.com/navinpeiris/logster/master/lib/logster/plugs/logger.ex).
+  Based on the [Logster plug](https://github.com/navinpeiris/logster/blob/master/lib/logster/plugs/logger.ex).
   """
 
   alias Plug.Conn
@@ -51,10 +51,10 @@ defmodule SlimLogger.Request do
     |> do_format_values
   end
 
-  def do_format_values(%_{} = params), do: params |> Map.from_struct() |> do_format_values()
-  def do_format_values(%{} = params), do: params |> Enum.into(%{}, &do_format_value/1)
+  defp do_format_values(%_{} = params), do: params |> Map.from_struct() |> do_format_values()
+  defp do_format_values(%{} = params), do: params |> Enum.into(%{}, &do_format_value/1)
 
-  def do_format_value({key, value}) when is_binary(value) do
+  defp do_format_value({key, value}) when is_binary(value) do
     if String.valid?(value) do
       {key, value}
     else
@@ -62,13 +62,10 @@ defmodule SlimLogger.Request do
     end
   end
 
-  def do_format_value(val), do: val
+  defp do_format_value(val), do: val
 
-  @doc """
-  Fetches the remote IP for a inbound request.
-  """
-  @spec get_remote_ip(conn :: Plug.Conn.t()) :: String.t() | nil
-  def get_remote_ip(conn) do
+  # Fetches the remote IP for a inbound request.
+  defp get_remote_ip(conn) do
     conn
     |> Plug.Conn.get_req_header("x-forwarded-for")
     |> pick_first()
