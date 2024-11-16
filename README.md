@@ -11,7 +11,7 @@ The package can be installed by adding `slim_logger` to your list of dependencie
 ```elixir
 def deps do
   [
-    {:slim_logger, "~> 0.2.0"}
+    {:slim_logger, "~> 0.3.0"}
   ]
 end
 ```

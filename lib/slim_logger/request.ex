@@ -15,7 +15,7 @@ defmodule SlimLogger.Request do
     []
     |> put_field(:state, conn.state)
     |> put_field(:params, get_params(conn))
-    |> put_field(:ip, conn.remote_ip)
+    |> put_field(:ip, :inet.ntoa(conn.remote_ip))
     |> put_field(:duration, duration |> SlimLogger.duration() |> Enum.join())
     |> put_field(:status, conn.status)
     |> put_field(:path, conn.request_path)
