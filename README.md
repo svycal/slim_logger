@@ -47,3 +47,6 @@ defmodule MyApp.Application do
   end
 end
 ```
+
+If your application is deployed behind a proxy (that sets `X-Forwarded-For` headers, for example), use the [RemoteIp](https://hexdocs.pm/remote_ip/RemoteIp.html) to rewrite `Plug.Conn`'
+s `remote_ip` based on forwarding headers.

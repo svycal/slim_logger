@@ -15,7 +15,7 @@ defmodule SlimLogger.Request do
     []
     |> put_field(:state, conn.state)
     |> put_field(:params, get_params(conn))
-    |> put_field(:ip, get_remote_ip(conn))
+    |> put_field(:ip, conn.remote_ip)
     |> put_field(:duration, duration |> SlimLogger.duration() |> Enum.join())
     |> put_field(:status, conn.status)
     |> put_field(:path, conn.request_path)
@@ -63,25 +63,4 @@ defmodule SlimLogger.Request do
   end
 
   defp do_format_value(val), do: val
-
-  # Fetches the remote IP for a inbound request.
-  defp get_remote_ip(conn) do
-    conn
-    |> Plug.Conn.get_req_header("x-forwarded-for")
-    |> pick_first()
-  end
-
-  # Grab the first IP string from the x-forwarded-for headers.
-  defp pick_first([val]) when is_binary(val), do: leading_ip(val)
-  defp pick_first(_), do: nil
-
-  # Given a comma separated list of IP addresses, return the first one.
-  #
-  #   iex> leading_ip("123.45.67.89, 1.2.3.4")
-  #   "123.45.67.89"
-  defp leading_ip(ip_addresses_string) do
-    ip_addresses_string
-    |> String.split(", ")
-    |> List.first()
-  end
 end
